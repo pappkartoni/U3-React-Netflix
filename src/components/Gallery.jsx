@@ -53,13 +53,13 @@ class Gallery extends Component {
     makeCarousels = () => {
         return (
         <>
-            <Carousel className="d-md-none" id="sm" interval={null}>
+            <Carousel className="d-md-none" id={this.props.query.slice(0,3) + "-sm"} interval={null}>
                 {this.fillCarousel(2)}
             </Carousel>
-            <Carousel className="d-none d-md-block d-lg-none" id="md" interval={null}>
+            <Carousel className="d-none d-md-block d-lg-none" id={this.props.query.slice(0,3) + "-md"} interval={null}>
                 {this.fillCarousel(4)}
             </Carousel>
-            <Carousel className="d-none d-lg-block" id="lg" interval={null}>
+            <Carousel className="d-none d-lg-block" id={this.props.query.slice(0,3) + "-lg"} interval={null}>
                 {this.fillCarousel(6)}
             </Carousel>
         </>
@@ -67,17 +67,6 @@ class Gallery extends Component {
     }
 
     render() {
-        let carItems = []
-        for (let i = 0; i < 2; i++) {
-            carItems.push(<Carousel.Item key={i}>
-                    	    <Row className="py-2 mx-n1">
-                                {this.state.movies?.slice(6*i, 6*i+6).map((m) => {
-                                    return <MovieCard key={m.imdbID} movie={m} />
-                                })}
-                            </Row>
-                        </Carousel.Item>)
-        }
-
         return (
             <Container fluid className="px-5 pt-5 pb-2">
                 <h2>{this.capitalize(this.props.query)}</h2>
