@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
+import MainNav from "./components/MainNav"
+import SubNav from "./components/SubNav"
+import SocialsFooter from "./components/SocialsFooter"
+import Gallery from "./components/Gallery"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MainNav />
+      <SubNav title="Movies"/>
+      <Gallery query="harry potter"></Gallery>
+      <Gallery query="lord of the rings"></Gallery>
+      <Gallery query="planet of the apes"></Gallery>
+      <SocialsFooter />
     </div>
   );
 }
