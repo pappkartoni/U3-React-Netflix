@@ -15,7 +15,7 @@ class Gallery extends Component {
 
     getMovies = async () => {
         try {
-            const res = await fetch("http://www.omdbapi.com/?apikey=ffbd3a91&type=movie&s=" + this.props.query)
+            const res = await fetch(`http://www.omdbapi.com/?apikey=ffbd3a91&type=movie&s=${encodeURIComponent(this.props.query)}`)
             if (res.ok) {
                 const results = await res.json()
                 if (results.Response === "True") {
