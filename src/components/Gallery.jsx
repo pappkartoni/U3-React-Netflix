@@ -40,7 +40,7 @@ class Gallery extends Component {
         for (let i = 0; i < Math.ceil(this.state.movies.length/per); i++) {
             carItems.push(<Carousel.Item key={i}>
                     	    <Row className="py-2 mx-n1">
-                                {this.state.movies.slice(per*i, per*i+per).map((m) => {
+                                {this.state.movies.filter(m => m.Title?.toLowerCase().includes(this.props.filterQuery)).slice(per*i, per*i+per).map((m) => {
                                     return <MovieCard key={m.imdbID} movie={m} />
                                 })}
                             </Row>

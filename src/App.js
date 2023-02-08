@@ -11,7 +11,7 @@ import { useState } from 'react'
 
 function App() {
     const [filterQuery, setFilterQuery] = useState("")
-    console.log("filterQuery is", filterQuery)
+
     const filterStuff = (e) => {
         setFilterQuery(e.target.value)
     }
