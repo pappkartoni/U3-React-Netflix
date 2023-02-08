@@ -1,21 +1,35 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MainNav from "./components/MainNav"
 import SubNav from "./components/SubNav"
 import SocialsFooter from "./components/SocialsFooter"
-import Gallery from "./components/Gallery"
+import Movies from "./components/Movies"
+import MovieDetails from './components/MovieDetails'
+import Shows from "./components/Shows"
+import { useState } from 'react'
 
 function App() {
-  return (
-    <div className="App">
-      <MainNav />
-      <SubNav title="Movies"/>
-      <Gallery query="harry potter"></Gallery>
-      <Gallery query="lord of the rings"></Gallery>
-      <Gallery query="planet of the apes"></Gallery>
-      <SocialsFooter />
-    </div>
-  );
+    const [filterQuery, setFilterQuery] = useState("")
+    console.log("filterQuery is", filterQuery)
+    const filterStuff = (e) => {
+        setFilterQuery(e.target.value)
+    }
+
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <MainNav filterStuff={filterStuff}/>
+                <SubNav title="Movies"/>
+                <Routes>
+                    <Route path="/" element={<Movies queries={["harry potter", "lord of the rings", "planet of the apes"]} filterQuery={filterQuery}/>} />
+                    <Route path="/shows/" element={<Shows queries={["love", "hate"]} />} />
+                    <Route path="details/:id/" element={<MovieDetails />} />
+                </Routes>
+                <SocialsFooter />
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;

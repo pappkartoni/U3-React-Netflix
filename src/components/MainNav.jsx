@@ -1,33 +1,39 @@
-import { Component } from "react"
 import {Navbar, Nav, Container} from "react-bootstrap"
 import AltNav from "./AltNav"
 import logo from "../netflix_logo.png"
+import { Link, useLocation } from 'react-router-dom'
 
-class MainNav extends Component {
-    render() {
-        return (
-        <Navbar collapseOnSelect expand="md" variant="dark">
-            <Container fluid className="px-5">
-                <Navbar.Brand href="#">
+const MainNav = (props) => {
+    const location = useLocation()
+
+    return (
+    <Navbar collapseOnSelect expand="md" variant="dark">
+        <Container fluid className="px-5">
+            <Link to="/">
+                <Navbar.Brand>
                     <img src={logo} alt="netflix" style={{height: 49}}></img>
                 </Navbar.Brand>
-                <Navbar.Toggle className="mr-auto" aria-controls="navi">
-                    Browse<span className="arrow"></span>
-                </Navbar.Toggle>
-                <Navbar.Collapse id="navi">
-                    <Nav className="mr-auto">
-                        <Nav.Link href="#">Home</Nav.Link>
-                        <Nav.Link href="#">TV Shows</Nav.Link>
-                        <Nav.Link href="#">Movies</Nav.Link>
-                        <Nav.Link href="#">Recently Added</Nav.Link>
-                        <Nav.Link href="#">My List</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-                <AltNav />
-            </Container>
-        </Navbar>
-        )
-    }
+            </Link>
+            <Navbar.Toggle className="mr-auto" aria-controls="navi">
+                Browse<span className="arrow"></span>
+            </Navbar.Toggle>
+            <Navbar.Collapse id="navi">
+                <Nav className="mr-auto">
+                    <Link to="/">
+                        <div className={`nav-link${location.pathname === '/' ? ' active' : ''}`}>Home</div>
+                    </Link>
+                    <Link to="/">
+                        <div className={`nav-link`}>Movies</div>
+                    </Link>
+                    <Link to="/shows/">
+                        <div className={`nav-link${location.pathname === '/shows/' ? ' active' : ''}`}>TV Shows</div>
+                    </Link>
+                </Nav>
+            </Navbar.Collapse>
+            <AltNav filterStuff={props.filterStuff} />
+        </Container>
+    </Navbar>
+    )
 }
 
 export default MainNav

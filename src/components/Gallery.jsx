@@ -15,7 +15,7 @@ class Gallery extends Component {
 
     getMovies = async () => {
         try {
-            const res = await fetch(`http://www.omdbapi.com/?apikey=ffbd3a91&type=movie&s=${encodeURIComponent(this.props.query)}`)
+            const res = await fetch(`http://www.omdbapi.com/?apikey=ffbd3a91&type=${this.props.cat}&s=${encodeURIComponent(this.props.query)}`)
             if (res.ok) {
                 const results = await res.json()
                 if (results.Response === "True") {
@@ -40,7 +40,7 @@ class Gallery extends Component {
         for (let i = 0; i < Math.ceil(this.state.movies.length/per); i++) {
             carItems.push(<Carousel.Item key={i}>
                     	    <Row className="py-2 mx-n1">
-                                {this.state.movies?.slice(per*i, per*i+per).map((m) => {
+                                {this.state.movies.slice(per*i, per*i+per).map((m) => {
                                     return <MovieCard key={m.imdbID} movie={m} />
                                 })}
                             </Row>
