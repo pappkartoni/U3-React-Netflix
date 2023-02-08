@@ -20,7 +20,10 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <MainNav filterStuff={filterStuff}/>
-                <SubNav title="Movies"/>
+                <Routes>
+                    <Route path="/" element={<SubNav title="Movies"/>} />
+                    <Route path="/shows/" element={<SubNav title="Shows"/>} />
+                </Routes>
                 <Routes>
                     <Route path="/" element={<Movies queries={["harry potter", "lord of the rings", "planet of the apes"]} filterQuery={filterQuery}/>} />
                     <Route path="/shows/" element={<Shows queries={["love", "hate"]} />} />
