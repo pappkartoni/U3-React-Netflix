@@ -26,7 +26,7 @@ function App() {
                 </Routes>
                 <Routes>
                     <Route path="/" element={<Movies queries={["harry potter", "lord of the rings", "planet of the apes"]} filterQuery={filterQuery}/>} />
-                    <Route path="/shows/" element={<Shows queries={["love", "hate"]} />} />
+                    <Route path="/shows/" element={<Shows queries={["love", "hate"]} filterQuery={filterQuery} />} />
                     <Route path="details/:id/" element={<MovieDetails />} />
                 </Routes>
                 <SocialsFooter />
