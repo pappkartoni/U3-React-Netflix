@@ -10,8 +10,6 @@ const MovieDeatils = () => {
     const [hasError, setHasError] = useState(false)
     const [comments, setComments] = useState([])
 
-    console.log(id)
-
     const getDetails = async () => {
         try {
             const res = await fetch(`http://www.omdbapi.com/?apikey=ffbd3a91&i=${id}`)
