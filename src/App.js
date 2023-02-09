@@ -21,16 +21,14 @@ function App() {
             <BrowserRouter>
                 <MainNav filterStuff={filterStuff}/>
                 <Routes>
-                    <Route path="/" element={<SubNav title="Movies"/>} />
-                    <Route path="/shows/" element={<SubNav title="Shows"/>} />
-                </Routes>
-                <Routes>
-                    <Route path="/" element={<Movies queries={["harry potter", "lord of the rings", "planet of the apes"]} filterQuery={filterQuery}/>} />
-                    <Route path="/shows/" element={<Shows queries={["love", "hate"]} filterQuery={filterQuery} />} />
+{/*                     <Route path="/" element={<SubNav title="Movies"/>} />
+                    <Route path="/shows/" element={<SubNav title="Shows"/>} /> */}
+                    <Route path="/" element={<><SubNav title="Movies"/><Movies queries={["harry potter", "lord of the rings", "planet of the apes"]} filterQuery={filterQuery}/></>} />
+                    <Route path="/shows/" element={<><SubNav title="Shows"/><Shows queries={["love", "hate"]} filterQuery={filterQuery} /></>} />
                     <Route path="details/:id/" element={<MovieDetails />} />
                 </Routes>
                 <SocialsFooter />
-            </BrowserRouter>
+            </BrowserRouter> 
         </div>
     );
 }

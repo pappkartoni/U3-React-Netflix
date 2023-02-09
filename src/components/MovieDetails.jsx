@@ -17,7 +17,6 @@ const MovieDeatils = () => {
             const res = await fetch(`http://www.omdbapi.com/?apikey=ffbd3a91&i=${id}`)
             if (res.ok) {
                 const data = await res.json()
-                console.log(data)
                 setDetails(data)
             /*     setIsLoading(false) */
             }
@@ -35,7 +34,6 @@ const MovieDeatils = () => {
                 }})
             if (res.ok) {
                 const data = await res.json()
-                console.log(data)
                 setComments(data)
                 setIsLoading(false)
             }
