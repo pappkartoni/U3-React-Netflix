@@ -18,7 +18,6 @@ class Gallery extends Component {
             const res = await fetch(`${process.env.REACT_APP_BE_URL}/media?title=${encodeURIComponent(this.props.query)}`)
             if (res.ok) {
                 const results = await res.json()
-                console.log(results)
                 if (results.length) {
                     this.setState({...this.state, isLoading: false, movies: results})
                 } else {

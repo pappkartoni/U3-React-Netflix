@@ -28,6 +28,9 @@ const MainNav = (props) => {
                     <Link to="/shows/">
                         <div className={`nav-link${location.pathname === '/shows/' ? ' active' : ''}`}>TV Shows</div>
                     </Link>
+                    <Link to="/uploader">
+                        <div className={`nav-link${location.pathname === '/uploader/' ? ' active' : ''}`}>Uploader</div>
+                    </Link>
                 </Nav>
             </Navbar.Collapse>
             <AltNav filterStuff={props.filterStuff} />

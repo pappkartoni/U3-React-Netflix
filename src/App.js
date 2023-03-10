@@ -8,6 +8,7 @@ import Movies from "./components/Movies"
 import MovieDetails from './components/MovieDetails'
 import Shows from "./components/Shows"
 import { useState } from 'react'
+import Uploader from './components/Uploader'
 
 function App() {
     const [filterQuery, setFilterQuery] = useState("")
@@ -28,6 +29,7 @@ function App() {
                         <Route path="/shows/" element={<Shows queries={["love", "hate"]} filterQuery={filterQuery} />} />
                     </Route>
                     <Route path="details/:id/" element={<MovieDetails />} />
+                    <Route path="/uploader/" element={<Uploader />} />
                 </Routes>
                 <SocialsFooter />
             </BrowserRouter> 
