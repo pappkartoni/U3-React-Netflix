@@ -12,11 +12,11 @@ const MovieDeatils = () => {
 
     const getDetails = async () => {
         try {
-            const res = await fetch(`http://www.omdbapi.com/?apikey=ffbd3a91&i=${id}`)
+            const res = await fetch(`${process.env.REACT_APP_BE_URL}/media/${id}`)
             if (res.ok) {
                 const data = await res.json()
                 setDetails(data)
-            /*     setIsLoading(false) */
+                setIsLoading(false)
             }
         } catch (error) {
             console.log(error)
@@ -60,14 +60,14 @@ const MovieDeatils = () => {
                 {details && <Row>
                     <Col xs={12} md={8}>
                         <Card className='detailed'>
-                            <Card.Img variant="top" src={details.Poster}></Card.Img>
+                            <Card.Img variant="top" src={details.poster}></Card.Img>
                             <Card.Body>
-                                <h2>{details.Title}</h2>
+                                <h2 style={{color: "black"}}>{details.title}</h2>
                                 <Row>
                                     <Col xs={8}>
                                         <div className='d-flex flex-column'>
-                                            <span>{details.Year} {details.Rated} {details.Released} {details.Runtime}</span>
-                                            <p>{details.Plot}</p>
+                                            <span>{details.year} - {details.imdbID}{/*  {details.Rated} {details.Released} {details.Runtime} */}</span>
+                                            {/* <p>{details.Plot}</p> */}
                                         </div>
                                     </Col>
                                     <Col xs={4}>

@@ -9,14 +9,14 @@ class MovieCard extends Component {
             <Col xs={6} md={3} lg={2} className="px-1">
                 <Card className="mb-2">
                     <div className="card-img-wrapper">
-                        <Link to={`/details/${m.imdbID}/`}>
-                            <Card.Img variant="top" src={m.Poster} />
+                        <Link to={`/details/${m.id}/`}>
+                            <Card.Img variant="top" src={m.poster} />
                         </Link>
                     </div>
                     <Card.Body>
                         <div className="d-flex flex-column">
-                            <Card.Title>{m.Title}</Card.Title>
-                            <Card.Text>Year: {m.Year} - Type: {m.Type}</Card.Text>
+                            <Card.Title>{m.title}</Card.Title>
+                            <Card.Text>Year: {m.year} - Type: {m.type}</Card.Text>
                         </div>
                     </Card.Body>
                 </Card>

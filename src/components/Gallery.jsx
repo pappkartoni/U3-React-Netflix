@@ -15,11 +15,12 @@ class Gallery extends Component {
 
     getMovies = async () => {
         try {
-            const res = await fetch(`http://www.omdbapi.com/?apikey=ffbd3a91&type=${this.props.cat}&s=${encodeURIComponent(this.props.query)}`)
+            const res = await fetch(`${process.env.REACT_APP_BE_URL}/media?title=${encodeURIComponent(this.props.query)}`)
             if (res.ok) {
                 const results = await res.json()
-                if (results.Response === "True") {
-                    this.setState({...this.state, isLoading: false, movies: results.Search})
+                console.log(results)
+                if (results.length) {
+                    this.setState({...this.state, isLoading: false, movies: results})
                 } else {
                     this.setState({...this.state, isLoading: false, errorMsg: "No movies found"})
                 }
@@ -40,7 +41,7 @@ class Gallery extends Component {
         for (let i = 0; i < Math.ceil(this.state.movies.length/per); i++) {
             carItems.push(<Carousel.Item key={i}>
                     	    <Row className="py-2 mx-n1">
-                                {this.state.movies.filter(m => m.Title?.toLowerCase().includes(this.props.filterQuery)).slice(per*i, per*i+per).map((m) => {
+                                {this.state.movies.filter(m => m.title?.toLowerCase().includes(this.props.filterQuery)).slice(per*i, per*i+per).map((m) => {
                                     return <MovieCard key={m.imdbID} movie={m} />
                                 })}
                             </Row>
