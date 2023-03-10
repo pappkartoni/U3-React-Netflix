@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Card, Col, Container, Row, Alert, Spinner } from 'react-bootstrap'
+import { Card, Col, Container, Row, Alert, Spinner, Button } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import CommentList from './CommentList'
 
@@ -42,6 +42,17 @@ const MovieDeatils = () => {
         }
     }
 
+    const downloadPDF = async () => {
+        try {
+            const res = await fetch(`${process.env.REACT_APP_BE_URL}/media/${id}/pdf`)
+            if (res.ok) {
+                window.location = res.url
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
         getDetails()
         getComments()
@@ -78,6 +89,7 @@ const MovieDeatils = () => {
                                         </div>
                                     </Col>
                                 </Row>
+                                <Button variant="primary" onClick={downloadPDF} type="button">DOWNLOAD</Button>
                             </Card.Body>
                         </Card>
                     </Col>
